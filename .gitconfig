@@ -1,0 +1,16 @@
+[user]
+    name = 
+    email = 
+
+[core]
+    excludesfile = ~/.gitignore_global
+
+[push]
+    default = tracking
+
+[pull]
+    default = tracking
+
+[branch]
+    autosetupmerge = true
+
