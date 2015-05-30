@@ -33,6 +33,8 @@ endif
 set gfn=Source\ Code\ Pro\ Medium\ 10
 set background=dark
 colorscheme solarized
+" flash instead of beep
+set visualbell
 " tab related
 set expandtab
 set tabstop=4

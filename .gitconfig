@@ -2,9 +2,6 @@
     name = 
     email = 
 
-[core]
-    excludesfile = ~/.gitignore_global
-
 [push]
     default = tracking
 
