@@ -1,6 +1,7 @@
 [user]
     name = 
     email = 
+    signingkey = 
 
 [push]
     default = tracking

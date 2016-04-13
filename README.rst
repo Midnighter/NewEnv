@@ -37,7 +37,6 @@ creating directories as necessary
     cp pip.conf ~/.pip/
     cp .tmux.conf ~/
     cp .gitconfig ~/
-    cp .gitignore_global ~/
 
 Colours
 -------
