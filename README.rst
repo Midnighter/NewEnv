@@ -7,24 +7,54 @@ Step-by-step guide to setting up a completely new bash environment to my liking.
 Your Bash
 ---------
 
-Copy the file ``.anysh_profile`` to your home directory and bind it into your
+Copy the file ``.mybashrc`` to your home directory and bind it into your
 ``.bash_profile`` (to be executed on login) or ``.bashrc`` (to be executed on
 opening a terminal).
 
 .. code-block:: bash
 
-    cp .ansh_profile ~/
+    cp .mybashrc ~/
 
 .. code-block:: bash
 
-    if [ -f $HOME/.anysh_profile ];then
-        source $HOME/.anysh_profile
+    if [ -f ${HOME}.mybashrc ];then
+        source ${HOME}/.mybashrc
     fi
 
-This assumes that ``tmux``, `tmuxifier`_ and ``virtualenv`` and
-``virtualenvwrapper`` for Python are installed.
+This assumes that ``tmux``, `tmuxifier`_ are installed and that ``virtualenv`` and
+``virtualenvwrapper`` are available for Python.
 
 .. _`tmuxifier`: https://github.com/jimeh/tmuxifier
+
+Python Virtualenv
+-----------------
+
+The file ``.mybashrc`` has the following lines in it:
+
+.. code-block:: bash
+
+    export WORKON_HOME="${HOME}/.virtualenvs"
+    source virtualenvwrapper.sh
+
+Change ``WORKON_HOME`` to your desired directory. Within that directory you will
+find a number of files. Copy the files ``postmkvirtualenv`` and ``postactivate``
+into there overwriting the existing (empty) files.
+
+postmkvirtualenv
+~~~~~~~~~~~~~~~~
+
+When a new virtualenv is created, this script will first try to install updated
+versions of a few packages which I find indispensable for all Python virtualenvs,
+namely ``setuptools``, ``pip``, ``wheel``, ``flake8``, ``virtualenv``,
+``virtualenvwrapper``. Then it will attempt to link the ``PyQt4`` system
+components into the virtualenv. I find QT a pain in the neck to install and this
+is easier.
+
+postactivate
+~~~~~~~~~~~~
+
+Upon activation of a virtualenv, this script ensures that the newest commands
+from ``virtualenvwrapper`` installed in the virtualenv are actually used.
 
 Misc Configuration
 ------------------

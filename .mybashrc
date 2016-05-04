@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #export GUROBI_HOME="${HOME}/.local/Gurobi/current"
 #PATH="${GUROBI_HOME}/bin:${PATH}"
 export PATH="$HOME/.local/bin:${HOME}/.tmuxifier/bin:${PATH}"
@@ -16,16 +15,19 @@ alias ls='ls --color=auto'
 alias ll='ls -lhF'
 alias la='ls -lah'
 alias l='ls -CF'
-alias ipynb='ipython notebook'
+alias ipynb='jupyter notebook'
 
 # tmux/ifier
 alias tmux='TERM=xterm-256color tmux'
 alias mux='tmuxifier'
 eval "$(tmuxifier init -)"
 
+# colors
+eval `dircolors "${HOME}/Work/Codebase/dircolors-solarized/dircolors.256dark"`
+
 # virtualenvwrapper
 export WORKON_HOME="${HOME}/.virtualenvs"
-. virtualenvwrapper.sh
+source virtualenvwrapper.sh
 
 # virtualenvwrapper aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
@@ -44,4 +46,3 @@ alias v.cd.site='cdsitepackages'
 alias v.ls='lsvirtualenv'
 alias v.ls.site='lssitepackages'
 alias v.all='allvirtualenv'
-
