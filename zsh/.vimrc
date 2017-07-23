@@ -10,12 +10,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'Lokaltog/vim-powerline'
 Plugin 'wesleyche/SrcExpl'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'danro/rename.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'fisadev/vim-isort'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -25,8 +30,8 @@ filetype plugin indent on    " required
 " https://github.com/tpope/vim-sensible
 
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-  syntax sync fromstart
+    syntax enable
+    syntax sync fromstart
 endif
 
 " look
@@ -37,13 +42,10 @@ colorscheme solarized
 set visualbell
 " tab related
 set expandtab
-set tabstop=4
-set softtabstop=4
 set shiftwidth=4
+set softtabstop=4
 set shiftround
-set smarttab
 set autoindent
-set smartindent
 set backspace=indent,eol,start
 set complete-=i
 " search
@@ -62,7 +64,7 @@ set ttimeoutlen=50
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+    nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
 set laststatus=2
@@ -71,32 +73,32 @@ set showcmd
 set wildmenu
 
 if !&scrolloff
-  set scrolloff=1
+    set scrolloff=1
 endif
 if !&sidescrolloff
-  set sidescrolloff=5
+    set sidescrolloff=5
 endif
 set display+=lastline
 
 if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
+    set encoding=utf-8
 endif
 
 if &shell =~# 'fish$'
-  set shell=/bin/bash
+    set shell=/bin/bash
 endif
 
 set autoread
 set fileformats+=mac
 
 if &history < 1000
-  set history=1000
+    set history=1000
 endif
 if &tabpagemax < 50
-  set tabpagemax=50
+    set tabpagemax=50
 endif
 if !empty(&viminfo)
-  set viminfo^=!
+    set viminfo^=!
 endif
 
 " Allow color schemes to do bright colors without forcing bold.
@@ -106,7 +108,7 @@ set t_Co=256
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+    runtime! macros/matchit.vim
 endif
 
 " highlight extra whitespace at the end of lines
@@ -117,15 +119,15 @@ autocmd BufWinLeave * call clearmatches()
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+    \gvy/<C-R><C-R>=substitute(
+    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+    \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+    \gvy?<C-R><C-R>=substitute(
+    \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+    \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -142,3 +144,6 @@ let g:syntastic_python_checkers=['pyflakes']
 
 inoremap <C-U> <C-G>u<C-U>
 
+" ruby
+autocmd FileType ruby set shiftwidth=2 softtabstop=2
+autocmd FileType yaml set shiftwidth=2 softtabstop=2

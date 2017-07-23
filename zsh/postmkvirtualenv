@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# This hook is run after a new virtualenv is created.
+
+pip install -U setuptools pip wheel flake8 virtualenv virtualenvwrapper

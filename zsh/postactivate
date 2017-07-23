@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# This hook is run after a virtualenv is activated.
+
+if [ -f "${VIRTUAL_ENV}/bin/virtualenvwrapper.sh" ]; then
+    source "${VIRTUAL_ENV}/bin/virtualenvwrapper.sh"
+fi
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv context dir vcs)

@@ -1,0 +1,15 @@
+[user]
+    name = {{ cookiecutter.user }}
+    email = {{ cookiecutter.email }}
+
+[push]
+    default = tracking
+
+[pull]
+    default = tracking
+
+[branch]
+    autosetupmerge = true
+
+[core]
+    excludesfile = ~/.gitignore

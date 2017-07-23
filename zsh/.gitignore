@@ -1,0 +1,12 @@
+# vim
+~*
+.*.sw[po]
+
+# JetBrains
+.idea/
+
+# dotenv
+.env
+
+# Apple
+.DS_Store
