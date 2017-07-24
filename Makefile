@@ -41,7 +41,6 @@ docker:
 	sudo apt-get update
 	# sudo apt-get install docker
 	# https://github.com/docker/compose/releases
-	
 
 ## Install pip configuration
 pip:
@@ -62,6 +61,7 @@ ruby:
 
 ## Install rust version manager
 rust:
+	curl -L https://raw.github.com/sdepold/rsvm/master/install.sh | sh
 
 install: git vim zsh tmux docker pip virtualenv
 
