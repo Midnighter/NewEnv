@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-THE_SHELL = {{ cookiecutter.shell }}
+THE_SHELL = zsh
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -27,6 +27,10 @@ vim:
 zsh:
 	sudo apt-get install zsh
 	cp "${PROJECT_DIR}/${THE_SHELL}/.zshrc" "${HOME}/"
+	cd "${HOME}"
+	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+	git clone "https://github.com/bhilburn/powerlevel9k.git" "~/.oh-my-zsh/custom/themes/powerlevel9k"
+	cd "${PROJECT_DIR}"
 
 ## Install tmux configuration with plugins and tmuxifier
 tmux:
@@ -51,7 +55,8 @@ pip:
 ## Install Python virtualenv with virtualenvwrapper
 virtualenv:
 	sudo apt-get install python-virtualenv python3-virtualenv virtualenvwrapper
-	cp "${PROJECT_DIR}/${THE_SHELL}/post*" "${HOME}/${WORKON_HOME}"
+	mkdir "${WORKON_HOME}"
+	cp ${PROJECT_DIR}/${THE_SHELL}/post* "${WORKON_HOME}/"
 
 ## Install node version manager
 node:
@@ -63,6 +68,7 @@ ruby:
 rust:
 	curl -L https://raw.github.com/sdepold/rsvm/master/install.sh | sh
 
+## Install everything
 install: git vim zsh tmux docker pip virtualenv
 
 #################################################################################
