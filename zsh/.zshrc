@@ -5,6 +5,7 @@ export PATH="${HOME}/.local/bin:${HOME}/.tmuxifier/bin:${PATH}"
 # Gurobi crap
 export LD_LIBRARY_PATH="${HOME}/.local/share/gurobi/FailLib:${LD_LIBRARY_PATH}"
 export GRB_LICENSE_FILE="${HOME}/.local/share/gurobi/gurobi.lic"
+
 # virtualenvwrapper
 export WORKON_HOME="${HOME}/.virtualenvs"
 
