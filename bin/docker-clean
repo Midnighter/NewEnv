@@ -1,6 +1,18 @@
 #!/usr/bin/env zsh
 
-set -x
+set -eu
 
-docker rm $(docker ps -a -q)
-docker rmi $(docker images -q -f dangling=true)
+containers=$(docker ps --all --quiet)
+if [[ ${#containers[@]} -gt 0 ]]; then
+    echo "Removing containers..."
+    docker rm ${containers[@]}
+else
+    echo "No containers found."
+fi
+images=$(docker images --quiet --filter dangling=true)
+if [[ ${#images[@]} -gt 0 ]]; then
+    echo "Removing dangling images..."
+    docker rmi ${iamges[@]}
+else
+    echo "No images found."
+fi
