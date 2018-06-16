@@ -81,9 +81,6 @@ alias ipynb="jupyter notebook"
 alias mux="tmuxifier"
 eval "$(tmuxifier init -)"
 
-# docker
-alias docker-clean="docker rm $(docker ps -a -q) && docker rmi $(docker images -q -f dangling=true)"
-
 # virtualenvwrapper aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 alias v="workon"

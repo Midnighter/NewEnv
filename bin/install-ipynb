@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+set -eux
+
+packages=(
+    jupyter
+    jupyter-contrib-nbextensions
+    jupyter-nbextensions-configurator
+    ipywidgets
+    yapf
+)
+
+pip install --upgrade "${packages[@]}"
+jupyter contrib nbextension install --sys-prefix
+jupyter nbextensions_configurator enable
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
