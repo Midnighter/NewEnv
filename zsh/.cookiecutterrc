@@ -1,0 +1,8 @@
+default_context:
+    full_name: "Moritz E. Beber"
+    email: "midnighter@posteo.net"
+    github_username: "Midnighter"
+    pypi_username: "midnighter"
+abbreviations:
+    gh: "https://github.com/{0}.git"
+    bb: "https://bitbucket.org/{0}"
